@@ -15,7 +15,7 @@ package ['apache2'] do
 end
 
 # Add the configuration
-template '/etc/apache2/sites-enabled/000-default.conf' do
+template node['apache2']['server']['config'] do
   source 'default.conf.erb'
 end
 
