@@ -5,7 +5,6 @@ license 'all_rights'
 description 'Installs/Configures apache2'
 long_description 'Installs/Configures apache2'
 version '0.1.0'
-depends 'httpd', '~> 0.4'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link

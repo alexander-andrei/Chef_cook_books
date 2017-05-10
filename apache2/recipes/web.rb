@@ -9,14 +9,17 @@ directory node['apache2']['web']['website_root'] do
   recursive true
 end
 
-# Add the site configuration.
-httpd_config 'default' do
+# Install Apache2
+package ['apache2'] do
+  action :install
+end
+
+# Add the configuration
+template '/etc/apache2/sites-enabled/000-default.conf' do
   source 'default.conf.erb'
 end
 
-# Install Apache and start the service.
-httpd_service 'default' do
-  mpm 'prefork'
-  action [:create, :start]
-  subscribes :restart, 'httpd_config[default]'
+# Restart the server
+service 'apache2' do
+  action :restart
 end
